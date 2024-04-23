@@ -32,8 +32,8 @@ def monte_carlo_option_price_2(S0, v0, r, theta, omega, xi, K, T, dt, N):
     # Loop over each time step
     for i in range(1, num_steps):
         # Generate normal random numbers arrays 
-        z1 = np.random.normal(0, 1, N)
-        z2 = np.random.normal(0, 1, N)
+        z1 = np.random.randn(N)
+        z2 = np.random.randn(N)
         # Calculate and update the volatilities and stock prices
         dv = theta * (omega - v) * dt + xi * np.sqrt(np.maximum(v, 0)) * z2 * np.sqrt(dt)
         v = np.maximum(v + dv, 0)  # v can't be negative
